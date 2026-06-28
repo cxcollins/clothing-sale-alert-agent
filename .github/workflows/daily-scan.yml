@@ -1,0 +1,32 @@
+name: Daily Sale Scan
+
+on:
+  schedule:
+    # 14:00 UTC = 7am PDT (summer) / 6am PST (winter).
+    # GitHub Actions cron has no native timezone support.
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run sale scan
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: uv run python -m src.main

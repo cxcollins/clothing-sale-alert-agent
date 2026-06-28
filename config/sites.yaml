@@ -1,0 +1,42 @@
+# List of sites to scan. Add or remove freely.
+#
+# Each scan does two passes per site:
+#   1) Fetch the homepage and ask Gemini to detect a sitewide sale +
+#      surface the URL of the site's dedicated sale/clearance page.
+#   2) For every site that surfaced a sale page in pass 1, fetch that
+#      page and ask Gemini to extract discounted product cards.
+#
+# COST FALLBACK: if Gemini quota / API costs ever become a concern, we can
+# eliminate pass 1's role of discovering the sale URL by adding an optional
+# `sale_url:` field per site below. With that present, pass 1 only confirms
+# the sitewide promo and pass 2 fetches the hand-curated URL directly. Wiring
+# this up requires small edits to config.py (add `sale_url` to Site) and
+# main.py (prefer site.sale_url over the Gemini-detected one). See the
+# COST NOTE in src/main.py for context.
+sites:
+  - name: Nike
+    url: https://www.nike.com
+  - name: Katin
+    url: https://www.katinusa.com
+
+# Your sizes, by category. Keys are free-form — Gemini will match items to whichever
+# category fits best. Add/remove categories as you like.
+sizes:
+  t-shirts: L
+  dress-shirts: M
+  bottoms: 32x30
+  shoes: 11
+  outerwear: M
+  shorts: M
+
+filters:
+  # Pick the N most-discounted items in your sizes across all sites.
+  top_n_items_of_note: 5
+
+email:
+  # Where the digest is delivered.
+  to: collinsc44@gmail.com
+  # Sender. The Resend default works only for emails sent to the address
+  # you signed up with. To use a custom domain, verify it in Resend first.
+  from: "onboarding@resend.dev"
+  subject_prefix: "[Sale Finder]"
