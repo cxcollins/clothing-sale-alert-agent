@@ -54,6 +54,7 @@ Given the cleaned HTML of a retailer's homepage, extract structured JSON describ
      will check sizing on the product page. Just match by product type.
    - An item is "discounted" if you can see either: a strikethrough/original price, an
      explicit "% off" marker, or sale/clearance language directly on the item card.
+   - Do not include an item marked "final sale" or that otherwise wouldn't be returnable.
    - Set `discount_pct` to a single integer percent off (round to nearest). If you
      can see a sale and original price, compute the % yourself.
    - Set `image_url` to the absolute product image URL (resolve relative URLs against
