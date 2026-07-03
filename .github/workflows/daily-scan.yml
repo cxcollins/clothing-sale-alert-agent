@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: uv sync
         env:
-          UV_INDEX_URL: https://pypi.org/simple
+          UV_DEFAULT_INDEX: https://pypi.org/simple
 
       - name: Run sale scan
         env:
