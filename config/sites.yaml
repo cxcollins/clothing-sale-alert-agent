@@ -18,6 +18,36 @@ sites:
     url: https://www.nike.com
   - name: Katin
     url: https://www.katinusa.com
+  - name: Marine Layer
+    url: https://www.marinelayer.com
+  - name: Patagonia
+    url: https://www.patagonia.com
+  - name: Banana Republic
+    url: https://bananarepublic.gap.com
+  - name: Lululemon
+    url: https://www.lululemon.com
+  - name: Vuori
+    url: https://www.vuoriclothing.com
+  - name: The North Face
+    url: https://www.thenorthface.com
+  - name: Columbia
+    url: https://www.columbia.com
+  - name: Arc'teryx
+    url: https://www.arcteryx.com
+  - name: Quince
+    url: https://www.quince.com
+  - name: Nobull
+    url: https://www.nobullproject.com
+  - name: O'Neill
+    url: https://www.oneill.com
+  - name: Billabong
+    url: https://www.billabong.com
+  - name: Rip Curl
+    url: https://www.ripcurl.com
+  - name: Volcom
+    url: https://www.volcom.com
+  - name: Quiksilver
+    url: https://www.quiksilver.com
 
 # Your sizes, by category. Keys are free-form — Gemini will match items to whichever
 # category fits best. Add/remove categories as you like.
